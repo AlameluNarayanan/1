@@ -1,0 +1,38 @@
+{
+	"name": "DS_AB",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Abisheks_Machine",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"S_CONTAINER": {
+				"type": "string"
+			},
+			"S_DIRECTORY": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": {
+					"value": "@dataset().S_DIRECTORY",
+					"type": "Expression"
+				},
+				"fileSystem": {
+					"value": "@dataset().S_CONTAINER",
+					"type": "Expression"
+				}
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

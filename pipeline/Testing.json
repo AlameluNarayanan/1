@@ -1,0 +1,111 @@
+{
+	"name": "Testing",
+	"properties": {
+		"activities": [
+			{
+				"name": "CD_AB_MyDL",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"wildcardFolderPath": {
+								"value": "@pipeline().parameters.S_DIRECTORY",
+								"type": "Expression"
+							},
+							"wildcardFileName": "*.csv",
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_FR_AB",
+						"type": "DatasetReference",
+						"parameters": {
+							"S_CONTAINER": {
+								"value": "@pipeline().parameters.S_CONTAINER",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_DL",
+						"type": "DatasetReference",
+						"parameters": {
+							"D_CONTAINER": {
+								"value": "@pipeline().parameters.D_CONTAINER",
+								"type": "Expression"
+							},
+							"D_DIRECTORY": {
+								"value": "@pipeline().parameters.D_DIRECTORY",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			}
+		],
+		"parameters": {
+			"S_CONTAINER": {
+				"type": "string",
+				"defaultValue": "input"
+			},
+			"D_CONTAINER": {
+				"type": "string",
+				"defaultValue": "input"
+			},
+			"D_DIRECTORY": {
+				"type": "string",
+				"defaultValue": "filespractice"
+			},
+			"S_DIRECTORY": {
+				"type": "string",
+				"defaultValue": "filespractice"
+			},
+			"sqlschema": {
+				"type": "string",
+				"defaultValue": "test"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2024-05-21T07:28:16Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

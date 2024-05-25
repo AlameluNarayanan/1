@@ -1,0 +1,48 @@
+{
+	"name": "Pipeline-Email",
+	"properties": {
+		"activities": [
+			{
+				"name": "Web1",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/json"
+					},
+					"url": {
+						"value": "https://prod-24.southindia.logic.azure.com:443/workflows/785c7fce22324a3db3709c3adcdb7cdb/triggers/When_a_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_a_HTTP_request_is_received%2Frun&sv=1.0&sig=JVInqLr1wcOuV9TJM9wQ8-5x4cehiTaqQZ92Pa7GC2s",
+						"type": "Expression"
+					},
+					"body": {
+						"value": "{\"DatafactoryName\" : \"@{pipeline().DataFactory}\",\"PipelineName\":\"@{pipeline().parameters.PipelineName}\", \"Subject\" : \"@{pipeline().parameters.Subject}\" , \"Message\": \"@{pipeline().parameters.Message}\"",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"Subject": {
+				"type": "string"
+			},
+			"Message": {
+				"type": "string"
+			},
+			"PipelineName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2024-05-24T06:43:50Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

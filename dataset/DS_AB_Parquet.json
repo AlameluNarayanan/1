@@ -1,0 +1,66 @@
+{
+	"name": "DS_AB_Parquet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Abisheks_Machine",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "veldata",
+				"fileSystem": "input"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "cust_id",
+				"type": "UTF8"
+			},
+			{
+				"name": "start_date",
+				"type": "UTF8"
+			},
+			{
+				"name": "end_date",
+				"type": "UTF8"
+			},
+			{
+				"name": "txn_id",
+				"type": "UTF8"
+			},
+			{
+				"name": "date",
+				"type": "UTF8"
+			},
+			{
+				"name": "year",
+				"type": "UTF8"
+			},
+			{
+				"name": "month",
+				"type": "UTF8"
+			},
+			{
+				"name": "day",
+				"type": "UTF8"
+			},
+			{
+				"name": "expense_type",
+				"type": "UTF8"
+			},
+			{
+				"name": "amt",
+				"type": "UTF8"
+			},
+			{
+				"name": "city",
+				"type": "UTF8"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

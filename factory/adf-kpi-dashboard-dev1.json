@@ -1,0 +1,9 @@
+{
+	"name": "adf-kpi-dashboard-dev1",
+	"location": "southindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "1b62e9ac-e889-4338-81c2-ee8318a9e2f6",
+		"tenantId": "c9d035c7-7576-49b5-b10b-ed893b353ab5"
+	}
+}

@@ -1,0 +1,73 @@
+{
+	"name": "DS_My_DL_Parquet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "parquet"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "Employee_id",
+				"type": "UTF8"
+			},
+			{
+				"name": "First_Name",
+				"type": "UTF8"
+			},
+			{
+				"name": "Last_Name",
+				"type": "UTF8"
+			},
+			{
+				"name": "Gender",
+				"type": "UTF8"
+			},
+			{
+				"name": "Salary",
+				"type": "UTF8"
+			},
+			{
+				"name": "Date_of_Birth",
+				"type": "UTF8"
+			},
+			{
+				"name": "Age",
+				"type": "UTF8"
+			},
+			{
+				"name": "Country",
+				"type": "UTF8"
+			},
+			{
+				"name": "Date_of_Joining",
+				"type": "UTF8"
+			},
+			{
+				"name": "Manager_id",
+				"type": "UTF8"
+			},
+			{
+				"name": "Currency",
+				"type": "UTF8"
+			},
+			{
+				"name": "End_Date",
+				"type": "UTF8"
+			},
+			{
+				"name": "Department_id",
+				"type": "UTF8"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
